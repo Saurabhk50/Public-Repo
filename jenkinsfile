@@ -1,26 +1,26 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'Your Name', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        text(name: 'tell me about yourself', defaultValue: '', description: 'Enter some information about the person')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'TOGGLE', defaultValue: false, description: 'Toggle this value')
 
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        choice(name: 'Make your pick', choices: ['Happy', 'Sad', 'Excited', 'Dead'], description: 'Pick something')
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
     stages {
-        stage('Example') {
+        stage('ParametersAddition') {
             steps {
-                echo "Hello ${params.PERSON}"
+                echo "Hello ${params.Your Name}"
 
-                echo "Biography: ${params.BIOGRAPHY}"
+                echo "Biography: ${params.tell me about yourself}"
 
                 echo "Toggle: ${params.TOGGLE}"
 
-                echo "Choice: ${params.CHOICE}"
+                echo "Choice: ${params.Make your pick}"
 
                 echo "Password: ${params.PASSWORD}"
             }
